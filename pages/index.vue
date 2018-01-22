@@ -1,5 +1,6 @@
 <template>
   <section class="container">
+    <Button type="primary" >like (<span>{{$store.state.counter}}</span>)</Button>
     <div>
       <app-logo/>
       <h1 class="title">

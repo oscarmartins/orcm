@@ -1,5 +1,9 @@
 <template>
-    <Form :model="formItem" :label-width="80">
+<div>
+
+<Button type="primary" @click="likeit()">like (<span>{{$store.state.counter}}</span>)</Button>
+
+<Form :model="formItem" :label-width="80">
         <FormItem label="Input">
             <Input v-model="formItem.input" placeholder="Enter something..."></Input>
         </FormItem>
@@ -51,7 +55,10 @@
             <Button type="primary">Submit</Button>
             <Button type="ghost" style="margin-left: 8px">Cancel</Button>
         </FormItem>
+        
     </Form>
+</div>
+    
 </template>
 <script>
     export default {
@@ -68,6 +75,11 @@
                     slider: [20, 50],
                     textarea: ''
                 }
+            }
+        },
+        methods: {
+            likeit () {
+                this.$store.commit('increment')
             }
         }
     }
