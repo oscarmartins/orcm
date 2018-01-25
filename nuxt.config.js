@@ -42,7 +42,10 @@ module.exports = {
     }
   },
   plugins: [
-    { src: '~/plugins/iview.js', ssr: true }
+    { 
+      src: '~/plugins/iview.js', 
+      ssr: true 
+    }
   ],
   router: {
     middleware: ['auth']
