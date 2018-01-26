@@ -47,7 +47,67 @@ module.exports = {
       ssr: true 
     }
   ],
+  modules: [
+    '@nuxtjs/auth',
+
+     // ...Axios module should be included AFTER @nuxtjs/auth
+    '@nuxtjs/axios'
+ ],
+ // Default Values
+ auth: {
+    user: {
+      endpoint: 'auth/user',
+      propertyName: 'user',
+      resetOnFail: true,
+      enabled: true,
+      method: 'GET',
+    },
+    login: {
+      endpoint: 'auth/login',
+    },
+    logout: {
+      endpoint: 'auth/logout',
+      method: 'GET',
+    },
+    redirect: {
+      guest: true,
+      user: true,
+      notLoggedIn: '/login',
+      loggedIn: '/'
+    },
+    token: {
+      enabled: true,
+      type: 'Bearer',
+      localStorage: true,
+      name: 'token',
+      cookie: true,
+      cookieName: 'token'
+    },
+    errorHandler: {
+      fetch: null,
+      logout: null
+    }
+},
   router: {
-    middleware: ['auth']
+    middleware: [
+      'auth',
+    ]
+  },
+  axios: {
+    proxyHeaders: true,
+		credentials: false,
+    baseURL: 'http://localhost:8081',
+    requestInterceptor: (config, { store }) => {
+            
+      if (store.state.token) {
+        console.log('store.state')
+        config.headers.common['Authorization'] = store.state.token
+      }
+      
+      return config
+    },
+    init: (axios, context) => { 
+      console.log(axios.defaults.baseURL)
+    }
   }
 }
