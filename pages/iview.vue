@@ -1,7 +1,7 @@
 <template>
 <div>
 
-<Button type="primary" >like (<span>{{$store.state.counter}}</span>)</Button>
+<Button type="primary" @click="like()">like (<span>{{$store.state.counter}}</span>)</Button>
 
 <Form :model="formItem" :label-width="80">
         <FormItem label="Input">
@@ -77,6 +77,10 @@
                 }
             }
         },
-        methods: {}
+        methods: {
+          like () {
+              this.$store.commit('increment')
+          }
+        }
     }
 </script>

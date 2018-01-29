@@ -50,7 +50,7 @@ module.exports = {
   modules: ['@nuxtjs/axios'],
   router: {
     middleware: [
-      'check-auth',
+      'check-auth'
     ]
   },
   axios: {
