@@ -69,7 +69,10 @@
   }
 },
 async created () {
-await this.$axios.$get('/services', {REQ_CONTEX: 6000, REQ_ACTION: 6010, REQ_INPUTS: {email:'oscarrafaelcampos@gmail.com'}});
+    await this.$axios.$get('/services', 
+        {
+            REQ_CONTEX: 6000, REQ_ACTION: 6010, REQ_INPUTS: {email:'oscarrafaelcampos@gmail.com'}
+        });
 }
 }
 </script>
