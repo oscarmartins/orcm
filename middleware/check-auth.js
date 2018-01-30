@@ -1,4 +1,4 @@
-export default function (context) {
+export default async function (context) {
   try {
     debugger
     const { req, store, redirect } = context
