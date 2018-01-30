@@ -62,6 +62,9 @@
   export default {
   layout (context) {
     return 'public'
+  },
+  options: {
+    guarded: false,
   }
 }
 </script>

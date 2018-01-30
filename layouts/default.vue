@@ -62,7 +62,8 @@ export default {
     return {
       isLocal: false
     }
-  }
+  },
+  middleware: 'auth'
 };
 </script>
 <style scoped>

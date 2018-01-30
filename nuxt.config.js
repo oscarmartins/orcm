@@ -69,7 +69,7 @@ module.exports = {
     redirect: {
       guest: true,
       user: true,
-      notLoggedIn: '/index',
+      notLoggedIn: '/login',
       loggedIn: '/'
     },
     token: {
@@ -85,22 +85,15 @@ module.exports = {
       logout: null
     }
   },
-  router: {
-    middleware: [
-      'auth'
-    ]
-  },
   axios: {
     proxyHeaders: true,
 		credentials: false,
     baseURL: 'http://localhost:8081',
-    requestInterceptor: (config, { store }) => {
-            
+    requestInterceptor: (config, { store }) => {            
       if (store.state.token) {
         console.log('store.state')
         config.headers.common['Authorization'] = store.state.token
-      }
-      
+      }      
       return config
     },
     init: (axios, context) => { 

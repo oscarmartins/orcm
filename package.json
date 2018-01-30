@@ -15,6 +15,7 @@
   "dependencies": {
     "@nuxtjs/auth": "latest",
     "@nuxtjs/axios": "latest",
+    "@std/esm": "^0.20.0",
     "iview": "latest",
     "nuxt": "latest"
   },
