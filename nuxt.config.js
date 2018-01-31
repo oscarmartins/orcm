@@ -30,7 +30,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -42,9 +42,9 @@ module.exports = {
     }
   },
   plugins: [
-    { 
-      src: '~/plugins/iview.js', 
-      ssr: true 
+    {
+      src: '~/plugins/iview.js',
+      ssr: true
     }
   ],
   modules: [
@@ -53,23 +53,23 @@ module.exports = {
   ],
   auth: {
     user: {
-      endpoint: 'auth/user',
+      endpoint: '/user',
       propertyName: 'user',
       resetOnFail: true,
       enabled: true,
       method: 'GET',
     },
     login: {
-      endpoint: 'auth/login',
+      endpoint: '/signin',
     },
     logout: {
-      endpoint: 'auth/logout',
+      endpoint: '/signout',
       method: 'GET',
     },
     redirect: {
       guest: true,
       user: true,
-      notLoggedIn: '/login',
+      notLoggedIn: '/signin',
       loggedIn: '/'
     },
     token: {
@@ -87,16 +87,16 @@ module.exports = {
   },
   axios: {
     proxyHeaders: true,
-		credentials: false,
+    credentials: false,
     baseURL: 'http://localhost:8081',
-    requestInterceptor: (config, { store }) => {            
+    requestInterceptor: (config, { store }) => {
       if (store.state.token) {
         console.log('store.state')
         config.headers.common['Authorization'] = store.state.token
-      }      
+      }
       return config
     },
-    init: (axios, context) => { 
+    init: (axios, context) => {
       // console.log(axios.defaults.baseURL)
     }
   }

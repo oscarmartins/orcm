@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <Form :model="formItem" :label-width="80">
+<div>
+    <h1>SignUp</h1>
+    <Form :model="formItem" :label-width="80">
         <FormItem label="Input">
             <Input v-model="formItem.input" placeholder="Enter something..."></Input>
         </FormItem>
@@ -8,22 +9,26 @@
             <Button type="primary">Submit</Button>
             <Button type="ghost" style="margin-left: 8px">Cancel</Button>
         </FormItem>
-        
+
     </Form>
-    </div>
+</div>
 </template>
+
 <script>
-  export default {
-      layout: 'public',
-        data () {
-            return {
-                formItem: {
-                    input: ''
-                }
+export default {
+    layout(context) {
+        return 'public'
+    },
+    data() {
+        return {
+            formItem: {
+                input: ''
             }
         }
     }
+}
 </script>
+
 <style scoped>
 
 </style>

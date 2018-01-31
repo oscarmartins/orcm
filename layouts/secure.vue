@@ -5,21 +5,9 @@
       <Menu mode="horizontal" theme="dark" active-name="1">
         <div class="layout-logo"></div>
         <div class="layout-nav">
-          <MenuItem name="about">
+          <MenuItem name="1">
           <Icon type="ios-navigate"></Icon>
-          <nuxt-link to="/about">About</nuxt-link>
-          </MenuItem>
-          <MenuItem name="signin">
-          <Icon type="ios-navigate"></Icon>
-          <nuxt-link to="/signin">SignIn</nuxt-link>
-          </MenuItem>
-          <MenuItem name="signup">
-          <Icon type="ios-navigate"></Icon>
-          <nuxt-link to="/signup">SignUp</nuxt-link>
-          </MenuItem>
-          <MenuItem name="test">
-          <Icon type="ios-navigate"></Icon>
-          <nuxt-link to="/app/dashboard">dashboard</nuxt-link>
+          <nuxt-link to="/iview"></nuxt-link>
           </MenuItem>
         </div>
       </Menu>
@@ -36,8 +24,8 @@
 
 <script>
 export default {
-  middleware: 'no-auth'
-}
+  middleware: 'auth'
+};
 </script>
 
 <style scoped>
@@ -61,7 +49,7 @@ export default {
 }
 
 .layout-nav {
-  width: 600px;
+  width: 420px;
   margin: 0 auto;
   margin-right: 20px;
 }

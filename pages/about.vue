@@ -1,10 +1,14 @@
 <template>
-  <div>logout</div>
+<div>
+    <h1>About</h1>
+</div>
 </template>
 
 <script>
 export default {
-    layout: 'public'
+    layout() {
+        return 'public'
+    }
 }
 </script>
 
