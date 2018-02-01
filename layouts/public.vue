@@ -17,17 +17,13 @@
           <Icon type="ios-navigate"></Icon>
           <nuxt-link to="/signup">SignUp</nuxt-link>
           </MenuItem>
-          <MenuItem name="test">
-          <Icon type="ios-navigate"></Icon>
-          <nuxt-link to="/app/dashboard">dashboard</nuxt-link>
-          </MenuItem>
         </div>
       </Menu>
     </Header>
   </Layout>
   <Layout>
     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-      <nuxt/>
+     <nuxt/>      
     </Content>
   </Layout>
 
