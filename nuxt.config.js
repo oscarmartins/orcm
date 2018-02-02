@@ -60,7 +60,7 @@ module.exports = {
       method: 'GET',
     },
     login: {
-      endpoint: '/signin',
+      endpoint: '/services',
     },
     logout: {
       endpoint: '/signout',
