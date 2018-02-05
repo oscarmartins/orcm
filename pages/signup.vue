@@ -26,7 +26,7 @@
         </Input>
       </FormItem>
       <FormItem>
-        <Button type="primary" @click="handleSubmit('formInline')">submit</Button>
+        <Button type="primary" :loading="loading" @click="handleSubmit('formInline')">submit</Button>
       </FormItem>
     </Form>
   </Card>
@@ -58,6 +58,7 @@ export default {
       }
     }
     return {
+      loading: false,
       formInline: {
         name: '',
         email: '',
@@ -93,12 +94,13 @@ export default {
   methods: {
     handleSubmit(name) {
       var _this22 = this
+      _this22.loading = true
       _this22.$refs[name].validate((valid) => {
         if (valid) {
           this.$store.dispatch('services/signup', _this22.formInline).then(function(resp){
             debugger
             if (resp instanceof Error) {
-              _this22.$Message.error(resp.response.data.error);
+              _this22.$Message.error(resp.response ? resp.response.data.error : 'Try again..');
             } else {
               _this22.$Message.success(resp.response.data.success);
             }
@@ -109,6 +111,7 @@ export default {
         } else {
           _this22.$Message.error('Fail!');
         }
+        setTimeout((inst) => {inst.loading = false}, 2000, _this22)
       })
     }
   }
