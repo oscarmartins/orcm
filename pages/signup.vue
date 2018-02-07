@@ -105,8 +105,13 @@ export default {
                 content: resp.success,
                 duration: 1.5,
                 onClose: () => {
-                  _this22.$Message.info('redirect to signin...')
-                  setTimeout((inst) => {inst.$router.push({name:'signin'})}, 1000, _this22)
+                  _this22.$Message.info({
+                    content: 'redirect to signin...',
+                    duration: 1.2,
+                    onClose: () => {
+                      setTimeout((inst) => {inst.$router.push({name:'signin'})}, 1000, _this22)
+                    }
+                  })
                 }
               })              
             }
