@@ -12,16 +12,13 @@ const services = {
   actions: {
       async signup (context, payload) {
         let data = await this.$axios.$post(endpoint, parameters(1000, 1010, payload)).then(function(resp){
-            debugger
             return resp
         }).catch(function(err, resp){
             if (err) {
-
+                console.log(err)
             }
-            debugger
             return err
         })
-        debugger
         if (data) {
             console.log(data)
         }

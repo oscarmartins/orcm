@@ -1,6 +1,5 @@
 export default async function (context) {
   try {
-    debugger
     const { req, store, redirect } = context
     if (process.server && !req) return // If nuxt generate, pass this middleware
     if (store.state.counter === 2) {

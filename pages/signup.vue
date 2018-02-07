@@ -98,11 +98,17 @@ export default {
       _this22.$refs[name].validate((valid) => {
         if (valid) {
           this.$store.dispatch('services/signup', _this22.formInline).then(function(resp){
-            debugger
             if (resp instanceof Error) {
-              _this22.$Message.error(resp.response ? resp.response.data.error : 'Try again..');
+              _this22.$Message.error(resp.response ? resp.response.data.error : 'Try again..')
             } else {
-              _this22.$Message.success(resp.response.data.success);
+              _this22.$Message.success({
+                content: resp.success,
+                duration: 1.5,
+                onClose: () => {
+                  _this22.$Message.info('redirect to signin...')
+                  setTimeout((inst) => {inst.$router.push({name:'signin'})}, 1000, _this22)
+                }
+              })              
             }
           }).catch(function (err){
             console.log(err)
