@@ -23,6 +23,27 @@ const services = {
             console.log(data)
         }
         return data
+      },
+      async signin (context, payload) {
+        let data = await this.$axios.$post(endpoint, parameters(2000, 2010, payload)).then(function(resp){
+            debugger
+            console.log(context)
+            /**
+             * store token 
+             * redirect to dashboard
+             */
+            $nuxt.$router.push({name: 'about'})
+            return resp
+        }).catch(function(err, resp){
+            if (err) {
+                console.log(err)
+            }
+            return err
+        })
+        if (data) {
+            console.log(data)
+        }
+        return data
       }
   },
   getters: {}

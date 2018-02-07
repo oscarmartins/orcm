@@ -93,23 +93,23 @@ export default {
   },
   methods: {
     handleSubmit(name) {
-      var _this22 = this
-      _this22.loading = true
-      _this22.$refs[name].validate((valid) => {
+      var _thproc = this
+      _thproc.loading = true
+      _thproc.$refs[name].validate((valid) => {
         if (valid) {
-          this.$store.dispatch('services/signup', _this22.formInline).then(function(resp){
+          this.$store.dispatch('services/signup', _thproc.formInline).then(function(resp){
             if (resp instanceof Error) {
-              _this22.$Message.error(resp.response ? resp.response.data.error : 'Try again..')
+              _thproc.$Message.error(resp.response ? resp.response.data.error : 'Try again..')
             } else {
-              _this22.$Message.success({
+              _thproc.$Message.success({
                 content: resp.success,
                 duration: 1.5,
                 onClose: () => {
-                  _this22.$Message.info({
+                  _thproc.$Message.info({
                     content: 'redirect to signin...',
                     duration: 1.2,
                     onClose: () => {
-                      setTimeout((inst) => {inst.$router.push({name:'signin'})}, 1000, _this22)
+                      setTimeout((inst) => {inst.$router.push({name:'signin'})}, 1000, _thproc)
                     }
                   })
                 }
@@ -118,11 +118,10 @@ export default {
           }).catch(function (err){
             console.log(err)
           })
-          
         } else {
-          _this22.$Message.error('Fail!');
+          _thproc.$Message.error('Fail!');
         }
-        setTimeout((inst) => {inst.loading = false}, 2000, _this22)
+        setTimeout((inst) => {inst.loading = false}, 2000, _thproc)
       })
     }
   }

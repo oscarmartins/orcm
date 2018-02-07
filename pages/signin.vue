@@ -16,7 +16,7 @@
         </Input>
       </FormItem>
       <FormItem>
-        <Button type="primary" @click="handleSubmit('formInline')">Signin</Button>
+        <Button type="primary" @click="handleSubmit('formInline')" :loading="loading">Signin</Button>
       </FormItem>
     </Form>
   </Card>
@@ -32,6 +32,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       formInline: {
         email: '',
         password: ''
@@ -46,12 +47,6 @@ export default {
             required: true,
             message: 'Please fill in the password.',
             trigger: 'blur'
-          },
-          {
-            type: 'string',
-            min: 6,
-            message: 'The password length cannot be less than 6 bits',
-            trigger: 'blur'
           }
         ]
       }
@@ -59,12 +54,36 @@ export default {
   },
   methods: {
     handleSubmit(name) {
-      this.$refs[name].validate((valid) => {
+      var _thproc = this
+      _thproc.loading = true
+      _thproc.$refs[name].validate((valid) => {
         if (valid) {
-          this.$Message.success('Success!');
+          this.$store.dispatch('services/signin', _thproc.formInline).then(function(resp){
+            debugger
+            if (resp instanceof Error) {
+              _thproc.$Message.error(resp.response ? resp.response.data.error : 'Try again..')
+            } else {
+              _thproc.$Message.success({
+                content: resp.success,
+                duration: 1.5,
+                onClose: () => {
+                  _thproc.$Message.info({
+                    content: 'redirect to signin...',
+                    duration: 1.2,
+                    onClose: () => {
+                      setTimeout((inst) => {inst.$router.push({name:'signin'})}, 1000, _thproc)
+                    }
+                  })
+                }
+              })              
+            }
+          }).catch(function (err){
+            console.log(err)
+          })
         } else {
-          this.$Message.error('Fail!');
+          _thproc.$Message.error('Fail!');
         }
+        setTimeout((inst) => {inst.loading = false}, 2000, _thproc)
       })
     }
   }
