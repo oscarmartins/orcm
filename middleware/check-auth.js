@@ -1,15 +1,16 @@
 export default async function (context) {
-  try {
-    const { req, store, redirect } = context
-    if (process.server && !req) return // If nuxt generate, pass this middleware
-    if (store.state.counter === 2) {
-      store.commit('reset')
-      console.log('redirect')
-      redirect('/auth/login');
+  try {    
+    const {store, redirect, route} = context
+    if (!store.getters['services/loggedIn']) {
+      return redirect('/signin')
+    }
+    // check route 
+    debugger
+    const next_redirect = '/app/account-validate' 
+    if (route.fullPath !== next_redirect && store.getters['services/accountValidation']) {
+      return redirect(next_redirect)
     }
   } catch (error) {
     console.log(error)
   }
-
-
 }

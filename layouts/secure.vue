@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  middleware: 'auth'
+  middleware: 'check-auth'
 };
 </script>
 

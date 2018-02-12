@@ -71,7 +71,7 @@ export default {
                     content: 'redirect to signin...',
                     duration: 1.2,
                     onClose: () => {
-                      setTimeout((inst) => {inst.$router.push({name:'signin'})}, 1000, _thproc)
+                      // setTimeout((inst) => {inst.$router.push({name:'signin'})}, 1000, _thproc)
                     }
                   })
                 }
