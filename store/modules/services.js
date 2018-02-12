@@ -9,11 +9,9 @@ const services = {
     user: ((process.browser && localStorage) ? localStorage.getItem('user') : null)
   },
   mutations: {
-    // SET_USER
     SET_USER (state, user) {
         state.user = user
     },
-    // SET_TOKEN
     SET_TOKEN (state, token) {
       state.orctoken = token
     }

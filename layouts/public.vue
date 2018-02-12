@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  middleware: 'no-auth'
+  middleware: 'public-middle'
 }
 </script>
 

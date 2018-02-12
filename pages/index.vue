@@ -67,9 +67,6 @@
 export default {
     layout(context) {
         return 'secure'
-    },
-     options: {
-        guarded: true,
-    },
+    }
 }
 </script>

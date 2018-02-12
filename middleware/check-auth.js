@@ -1,5 +1,6 @@
 export default async function (context) {
-  try {    
+  try {
+    debugger    
     const {store, redirect, route} = context
     if (!store.getters['services/loggedIn']) {
       return redirect('/signin')
@@ -11,6 +12,7 @@ export default async function (context) {
       return redirect(next_redirect)
     }
   } catch (error) {
+    debugger
     console.log(error)
   }
 }

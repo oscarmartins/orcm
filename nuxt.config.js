@@ -48,43 +48,8 @@ module.exports = {
     }
   ],
   modules: [
-    '@nuxtjs/auth',
     '@nuxtjs/axios'
   ],
-  auth: {
-    user: {
-      endpoint: '/user',
-      propertyName: 'user',
-      resetOnFail: true,
-      enabled: true,
-      method: 'GET',
-    },
-    login: {
-      endpoint: '/services',
-    },
-    logout: {
-      endpoint: '/signout',
-      method: 'GET',
-    },
-    redirect: {
-      guest: true,
-      user: true,
-      notLoggedIn: '/signin',
-      loggedIn: '/'
-    },
-    token: {
-      enabled: true,
-      type: 'Bearer',
-      localStorage: true,
-      name: 'token',
-      cookie: true,
-      cookieName: 'token'
-    },
-    errorHandler: {
-      fetch: null,
-      logout: null
-    }
-  },
   axios: {
     proxyHeaders: true,
     credentials: false,

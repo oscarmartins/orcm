@@ -66,7 +66,7 @@ export default {
             isLocal: false
         }
     },
-    middleware: 'auth'
+    middleware: 'check-auth'
 };
 </script>
 
